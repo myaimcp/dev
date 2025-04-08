@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentisIQ - AI Agents for Insurance Automation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @font-face {
+        font-family: 'LucideIcons';
+        src: url(https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.ttf) format('truetype');
+      }
+      .lucide {
+        font-family: 'LucideIcons';
+        font-size: 1.25rem; /* Adjust icon size as needed */
+        line-height: 1;
+        font-style: normal;
+        font-weight: normal;
+        display: inline-block;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      /* Basic smooth scroll */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Updated gradient for hero using purple */
+      .hero-gradient {
+        background: linear-gradient(135deg, #e9d5ff 0%, #f3e8ff 100%); /* Light purple gradient (purple-200 to purple-100) */
+      }
+      /* Style for the 'before/after' comparison */
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        align-items: center;
+      }
+      .comparison-item {
+        border: 1px solid #e5e7eb; /* gray-200 */
+        border-radius: 0.5rem; /* rounded-lg */
+        padding: 1rem; /* p-4 */
+        background-color: #ffffff; /* white */
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-sm */
+      }
+      .comparison-item h4 {
+        font-weight: 600; /* font-semibold */
+        margin-bottom: 0.5rem; /* mb-2 */
+        color: #1f2937; /* gray-800 */
+      }
+      .comparison-item code {
+        display: block;
+        background-color: #f3f4f6; /* gray-100 */
+        padding: 0.5rem; /* p-2 */
+        border-radius: 0.375rem; /* rounded-md */
+        font-family: monospace;
+        font-size: 0.875rem; /* text-sm */
+        color: #4b5563; /* gray-600 */
+        white-space: pre-wrap; /* Allow wrapping */
+        word-break: break-all;
+      }
+       /* Updated arrow styling */
+      .arrow {
+        font-size: 2rem; /* text-3xl */
+        color: #a855f7; /* purple-500 */
+        text-align: center;
+        margin: 1rem 0; /* my-4 */
+      }
+      /* Responsive adjustments for comparison */
+      @media (max-width: 768px) { /* md breakpoint */
+        .comparison-grid {
+          grid-template-columns: 1fr;
+        }
+        .arrow {
+          transform: rotate(90deg);
+        }
+      }
+    </style>
+    <script>
+      // Basic configuration for Tailwind (optional, using defaults)
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold text-purple-600">AgentisIQ</span>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="#features" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Features</a>
+                    <a href="#testimonials" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Testimonials</a>
+                    <a href="#pricing" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Pricing</a>
+                </div>
+                <div class="flex items-center">
+                     <a href="#signup" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-gradient py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+                <span class="block">Upgrade Insurance RPA to</span>
+                 <span class="block text-purple-600">Intelligent AI Agents</span>
+            </h1>
+             <p class="mt-6 max-w-md mx-auto text-lg text-gray-700 sm:text-xl md:mt-8 md:max-w-3xl">
+                Transform your brittle Property & Casualty RPA workflows into adaptive, efficient AI agents using our cutting-edge Model Context Protocol (MCP). Go from fragile process to automated outcome in minutes.
+            </p>
+            <div class="mt-8 sm:mt-12 flex justify-center space-x-4">
+                 <a href="#signup" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                    Request a Demo
+                </a>
+                <a href="#features" class="inline-flex items-center justify-center px-6 py-3 border border-purple-600 rounded-md text-base font-medium text-purple-600 bg-white hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="transformation" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">
+                From Fragile RPA to Robust AI Agents
+            </h2>
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h4><span class="lucide mr-2">&#xea71;</span>Traditional RPA Workflow</h4>
+                    <p class="text-sm text-gray-500 mb-3">Often requires complex, screen-scraping scripts prone to breaking with UI changes.</p>
+                    <code>
+# Example: Simplified RPA pseudo-script
+CLICK element_id='claim_number_field'
+TYPE text='{claim_id}'
+CLICK element_id='submit_button'
+WAIT for element_id='confirmation_popup'
+IF exists(element_id='error_message') THEN
+  LOG 'Error processing claim {claim_id}'
+  STOP
+ELSE
+  LOG 'Claim {claim_id} processed'
+ENDIF
+                    </code>
+                </div>
+
+                <div class="comparison-item border-purple-300 ring-1 ring-purple-300">
+                     <h4><span class="lucide mr-2 text-purple-600">&#xea3c;</span>AgentisIQ AI Agent (via MCP)</h4>
+                     <p class="text-sm text-gray-500 mb-3">Uses deep process understanding via MCP for resilient, adaptive automation.</p>
+                    <code>
+# Example: AgentisIQ Agent definition (conceptual)
+AGENT P&C_Claim_Processor
+GOAL: Process insurance claim efficiently.
+CONTEXT: Use P&C Claim Schema via MCP.
+STEPS:
+  1. IDENTIFY claim_id from source.
+  2. VALIDATE claim_data against schema.
+  3. INTERACT with core system API (submit_claim).
+  4. HANDLE exceptions (e.g., missing_data, system_error).
+  5. CONFIRM processing status.
+OUTPUT: Processing confirmation or error details.
+                    </code>
+                </div>
+            </div>
+             <div class="arrow md:hidden">➔</div>
+             <p class="text-center mt-8 text-lg text-gray-600">
+                AgentisIQ understands the *intent* behind the process, not just the clicks. This means faster deployment, less maintenance, and true automation resilience.
+            </p>
+        </div>
+    </section>
+
+    <section id="features" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                 <h2 class="text-base font-semibold text-purple-600 tracking-wide uppercase">Why AgentisIQ?</h2>
+                <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Unlock Next-Generation Insurance Automation
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Leverage the power of AI and Model Context Protocol (MCP) to overcome the limitations of traditional RPA.
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="pt-6">
+                    <div class="flow-root bg-white rounded-lg px-6 pb-8 shadow-sm h-full">
+                        <div class="-mt-6">
+                            <div>
+                                 <span class="inline-flex items-center justify-center p-3 bg-purple-500 rounded-md shadow-lg">
+                                    <span class="lucide text-white">&#xea71;</span> </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Rapid Deployment</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Convert existing RPA logic or define new processes in minutes, not weeks. Our MCP understands insurance workflows natively.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <div class="flow-root bg-white rounded-lg px-6 pb-8 shadow-sm h-full">
+                        <div class="-mt-6">
+                            <div>
+                                 <span class="inline-flex items-center justify-center p-3 bg-purple-500 rounded-md shadow-lg">
+                                    <span class="lucide text-white">&#xea3c;</span> </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">AI-Powered Resilience</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                AI agents adapt to UI changes and process variations, drastically reducing the brittleness and maintenance overhead of RPA.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <div class="flow-root bg-white rounded-lg px-6 pb-8 shadow-sm h-full">
+                        <div class="-mt-6">
+                            <div>
+                                 <span class="inline-flex items-center justify-center p-3 bg-purple-500 rounded-md shadow-lg">
+                                     <span class="lucide text-white">&#xe9e1;</span> </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Reduced Maintenance</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Spend less time fixing broken bots and more time automating complex, high-value P&C insurance tasks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="pt-6">
+                    <div class="flow-root bg-white rounded-lg px-6 pb-8 shadow-sm h-full">
+                        <div class="-mt-6">
+                            <div>
+                                 <span class="inline-flex items-center justify-center p-3 bg-purple-500 rounded-md shadow-lg">
+                                     <span class="lucide text-white">&#xea60;</span> </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Scalable Automation</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Easily scale your automation efforts across various P&C processes like claims, underwriting, and policy administration.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="pt-6">
+                    <div class="flow-root bg-white rounded-lg px-6 pb-8 shadow-sm h-full">
+                        <div class="-mt-6">
+                            <div>
+                                 <span class="inline-flex items-center justify-center p-3 bg-purple-500 rounded-md shadow-lg">
+                                     <span class="lucide text-white">&#xea09;</span> </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Model Context Protocol</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Our unique MCP provides the AI with deep domain understanding, enabling more accurate and context-aware automation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="pt-6">
+                    <div class="flow-root bg-white rounded-lg px-6 pb-8 shadow-sm h-full">
+                        <div class="-mt-6">
+                            <div>
+                                 <span class="inline-flex items-center justify-center p-3 bg-purple-500 rounded-md shadow-lg">
+                                     <span class="lucide text-white">&#xe9c8;</span> </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Integrates Easily</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Connect AgentisIQ agents with your existing systems and platforms through robust APIs and integrations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-16 bg-white overflow-hidden">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">
+                Trusted by Leading Insurance Innovators
+            </h2>
+            <div class="relative">
+                <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                    <blockquote class="bg-gray-50 p-8 rounded-lg shadow-sm">
+                        <div class="text-lg font-medium text-gray-900">
+                            "AgentisIQ transformed our claims processing. What used to take hours and break constantly now runs flawlessly. The AI adaptation is incredible."
+                        </div>
+                        <footer class="mt-6">
+                            <p class="text-base font-medium text-gray-900">Jane Doe</p>
+                             <p class="text-sm font-medium text-purple-600">Head of Automation, P&C InsureCorp</p>
+                        </footer>
+                    </blockquote>
+                    <blockquote class="bg-gray-50 p-8 rounded-lg shadow-sm">
+                        <div class="text-lg font-medium text-gray-900">
+                            "We went from fragile RPA scripts to intelligent AI agents in under a month. The reduction in maintenance effort alone paid for the platform."
+                        </div>
+                        <footer class="mt-6">
+                            <p class="text-base font-medium text-gray-900">John Smith</p>
+                              <p class="text-sm font-medium text-purple-600">Director of Operations, SecureSure Insurance</p>
+                        </footer>
+                    </blockquote>
+                     <blockquote class="bg-gray-50 p-8 rounded-lg shadow-sm">
+                        <div class="text-lg font-medium text-gray-900">
+                            "The Model Context Protocol is a game-changer. The AI truly understands our insurance processes, leading to much more robust automation."
+                        </div>
+                        <footer class="mt-6">
+                            <p class="text-base font-medium text-gray-900">Alex Johnson</p>
+                              <p class="text-sm font-medium text-purple-600">VP of Digital Transformation, Global Indemnity</p>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Simple, Transparent Pricing
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Choose the plan that fits your automation needs. Scale as you grow.
+                </p>
+            </div>
+
+            <div class="mt-12 space-y-8 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8">
+                <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Starter</h3>
+                    <p class="mt-4 text-sm text-gray-500">Perfect for teams getting started with AI agents.</p>
+                    <div class="mt-6">
+                        <span class="text-4xl font-extrabold text-gray-900">$499</span>
+                        <span class="text-base font-medium text-gray-500">/mo</span>
+                    </div>
+                    <ul role="list" class="mt-6 space-y-4 flex-grow">
+                        <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span> <span class="text-sm text-gray-500">Up to 5 AI Agents</span>
+                        </li>
+                         <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">Basic MCP Context Models</span>
+                        </li>
+                        <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">Standard Support</span>
+                        </li>
+                         <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">Community Forum Access</span>
+                        </li>
+                    </ul>
+                    <a href="#signup" class="mt-8 block w-full bg-gray-800 border border-transparent rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900">Get Started</a>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col ring-2 ring-purple-600">
+                     <div class="flex justify-between items-center">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Pro</h3>
+                         <span class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Most Popular</span>
+                    </div>
+                    <p class="mt-4 text-sm text-gray-500">For growing teams scaling their automation.</p>
+                    <div class="mt-6">
+                        <span class="text-4xl font-extrabold text-gray-900">$1,999</span>
+                        <span class="text-base font-medium text-gray-500">/mo</span>
+                    </div>
+                     <ul role="list" class="mt-6 space-y-4 flex-grow">
+                        <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">Up to 25 AI Agents</span>
+                        </li>
+                         <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">Advanced MCP Context Models</span>
+                        </li>
+                        <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">Priority Support (Email & Chat)</span>
+                        </li>
+                         <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">API Access</span>
+                        </li>
+                         <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">Dedicated Onboarding</span>
+                        </li>
+                    </ul>
+                     <a href="#signup" class="mt-8 block w-full bg-purple-600 border border-transparent rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-purple-700">Choose Pro</a>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Enterprise</h3>
+                    <p class="mt-4 text-sm text-gray-500">For large organizations with complex needs.</p>
+                    <div class="mt-6">
+                        <span class="text-4xl font-extrabold text-gray-900">Custom</span>
+                    </div>
+                     <ul role="list" class="mt-6 space-y-4 flex-grow">
+                        <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">Unlimited AI Agents</span>
+                        </li>
+                         <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">Custom MCP Models & Training</span>
+                        </li>
+                        <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">Dedicated Account Manager</span>
+                        </li>
+                         <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">Premium Support & SLA</span>
+                        </li>
+                         <li class="flex space-x-3">
+                            <span class="lucide text-green-500 flex-shrink-0">&#xe96a;</span>
+                            <span class="text-sm text-gray-500">Advanced Security & Compliance</span>
+                        </li>
+                    </ul>
+                    <a href="#signup" class="mt-8 block w-full bg-gray-800 border border-transparent rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="signup" class="bg-gradient-to-r from-purple-600 to-purple-800">
+        <div class="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                <span class="block">Ready to revolutionize your</span>
+                <span class="block">insurance workflows?</span>
+            </h2>
+              <p class="mt-4 text-lg leading-6 text-purple-100">
+                Stop fighting fragile RPA bots. Start building intelligent, adaptive AI agents with AgentisIQ today.
+            </p>
+              <a href="#" class="mt-8 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-purple-700 bg-white hover:bg-purple-50 sm:w-auto">
+                Request a Personalized Demo
+            </a>
+               <p class="mt-4 text-sm text-purple-200">Or <a href="#" class="font-medium text-white hover:underline">sign up for the Starter plan</a></p>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+                 <div class="px-5 py-2">
+                    <a href="#features" class="text-base text-gray-400 hover:text-gray-300">Features</a>
+                </div>
+                 <div class="px-5 py-2">
+                    <a href="#testimonials" class="text-base text-gray-400 hover:text-gray-300">Testimonials</a>
+                </div>
+                 <div class="px-5 py-2">
+                    <a href="#pricing" class="text-base text-gray-400 hover:text-gray-300">Pricing</a>
+                </div>
+                 <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-400 hover:text-gray-300">Privacy Policy</a>
+                </div>
+                 <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-400 hover:text-gray-300">Terms of Service</a>
+                </div>
+            </nav>
+            <p class="mt-8 text-center text-base text-gray-400">
+                &copy; 2025 AgentisIQ Inc. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
