@@ -108,6 +108,20 @@
          font-weight: 600;
          color: #ca8a04; /* yellow-600 */
       }
+      /* Home link styling */
+      .home-link {
+        position: absolute;
+        top: 1rem; /* Adjust as needed */
+        right: 1rem; /* Adjust as needed */
+        z-index: 10; /* Ensure it's above cards */
+      }
+       @media (min-width: 640px) { /* sm breakpoint */
+         .home-link {
+            top: 2rem;
+            right: 2rem;
+         }
+       }
+
     </style>
     <script>
       // Basic configuration for Tailwind (optional, using defaults)
@@ -122,11 +136,11 @@
       }
     </script>
 </head>
-<body class="demo-gradient-bg min-h-screen flex items-center justify-center p-4 sm:p-8">
+<body class="demo-gradient-bg min-h-screen flex items-center justify-center p-4 sm:p-8 relative"> <a href="https://agentisiq.com/" title="Go to AgentisIQ Home" class="home-link text-purple-600 hover:text-purple-800 font-medium text-sm flex items-center bg-white/70 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm hover:shadow-md transition-shadow">
+        <span class="lucide mr-1 text-base">&#xea0f;</span> Home
+    </a>
 
-    <div class="w-full max-w-3xl space-y-6">
-
-        <div id="step1" class="demo-card">
+    <div class="w-full max-w-3xl space-y-6 mt-12 sm:mt-0"> <div id="step1" class="demo-card">
             <h2 class="text-2xl font-bold text-purple-800 mb-3">Step 1: Existing RPA Workflow</h2>
             <p class="text-gray-600 mb-4">
                 Let's look at a typical RPA script for basic P&C claim validation. It relies heavily on specific UI elements (like button IDs) and fixed steps, making it <span class="highlight">brittle</span>.
@@ -323,7 +337,12 @@ RESILIENCE:
             setTimeout(() => {
                  step2Button.style.display = 'block';
                  // Add a subtle pulse effect to the button
-                 step2Button.querySelector('button').classList.add('animate-pulse');
+                 const buttonElement = step2Button.querySelector('button');
+                 if(buttonElement) {
+                    buttonElement.classList.add('animate-pulse');
+                    // Remove pulse after a short time
+                    setTimeout(() => buttonElement.classList.remove('animate-pulse'), 2000);
+                 }
             }, 2100); // Delay slightly longer than the transition duration
         }
 
@@ -339,9 +358,14 @@ RESILIENCE:
                      progressBar.style.transition = 'width 2s ease-in-out';
                  }, 50);
              }
-             // Hide step 2 button if visible
+             // Hide step 2 button if visible and remove pulse
             const step2Button = document.getElementById('step2Button');
-            if (step2Button) step2Button.style.display = 'none';
+            if (step2Button) {
+                step2Button.style.display = 'none';
+                const buttonElement = step2Button.querySelector('button');
+                if(buttonElement) buttonElement.classList.remove('animate-pulse');
+            }
+
 
             // Show the first step
             showStep(1);
